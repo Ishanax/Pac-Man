@@ -1,0 +1,66 @@
+html,
+body {
+    margin: 10;
+    padding: 10;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 420px;
+    height: 420px;
+    border: solid black;
+}
+
+.grid div {
+    width: 15px;
+    height: 15px;
+    /* background-color: purple; */
+}
+
+.pac-dots {
+    background-color: green;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-sizing: border-box;
+}
+
+.wall {
+    background: blue;
+}
+
+/* .ghost-lair {
+} */
+
+/* Heart shaped  */
+.power-pellet {
+    position: relative;
+    width: 10px;
+    height: 9px;
+}
+.power-pellet:before,
+.power-pellet:after {
+    position: absolute;
+    content: '';
+    left: 5px;
+    top: 0;
+    width: 5px;
+    height: 8px;
+    background: red;
+    border-radius: 5px 5px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+.power-pellet:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.pacman {
+    background-color: rgb(250, 212, 41);
+    border: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}

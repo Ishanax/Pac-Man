@@ -2,6 +2,12 @@ html,
 body {
     margin: 10;
     padding: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vh;
+    height: 100vh;
 }
 
 .grid {
@@ -18,7 +24,7 @@ body {
     /* background-color: purple; */
 }
 
-.pac-dots {
+.pac-dot {
     background-color: green;
     border-radius: 50%;
     border: 5px solid white;
@@ -29,17 +35,14 @@ body {
     background: blue;
 }
 
-/* .ghost-lair {
-} */
-
-/* Heart shaped  */
-.power-pellet {
+/* Heart shaped power pellet */
+.heart {
     position: relative;
     width: 10px;
     height: 9px;
 }
-.power-pellet:before,
-.power-pellet:after {
+.heart:before,
+.heart:after {
     position: absolute;
     content: '';
     left: 5px;
@@ -51,7 +54,7 @@ body {
     transform: rotate(-45deg);
     transform-origin: 0 100%;
 }
-.power-pellet:after {
+.heart:after {
     left: 0;
     transform: rotate(45deg);
     transform-origin: 100% 100%;
@@ -63,4 +66,31 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
+}
+
+.blinky {
+    background-color: #ff006e;
+    border: none;
+    border-radius: 0;
+}
+.pinky {
+    background-color: hotpink;
+    border: none;
+    border-radius: 0;
+}
+.inky {
+    background-color: indigo;
+    border: none;
+    border-radius: 0;
+}
+.clyde {
+    background-color: #858ae3;
+    border: none;
+    border-radius: 0;
+}
+
+.scared-ghost {
+    border: none;
+    border-radius: 0;
+    background-color: orangered;
 }

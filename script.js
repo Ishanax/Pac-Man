@@ -90,7 +90,6 @@ function control(e){
             pacmanCurrentIndex-=1
             if(pacmanCurrentIndex===364) { pacmanCurrentIndex = 391}
         break 
-
         case 39:
         if ( 
             !squares[pacmanCurrentIndex +1].classList.contains('ghost-lair') &&

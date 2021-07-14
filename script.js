@@ -135,9 +135,9 @@ class Ghost {
 
 const ghosts = [
     new Ghost('blinky', 110, 2000),
-    new Ghost('pinky', 30, 2000),
-    new Ghost('inky', 701, 2000),
-    new Ghost('clyde', 749, 2000)
+    new Ghost('pinky', 30, 200),
+    new Ghost('inky', 701, 200),
+    new Ghost('clyde', 749, 200)
 ]
 //draw ghosts on grid
 ghosts.forEach(ghost => {

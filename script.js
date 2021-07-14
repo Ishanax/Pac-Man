@@ -21,12 +21,12 @@ const layout = [
     1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
     1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,
     1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,1,1,2,2,1,1,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
-    4,4,4,4,4,4,0,0,0,4,1,2,2,2,2,2,2,1,4,0,0,0,4,4,4,4,4,4,
-    1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,1,1,1,1,1,1,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,1,1,1,1,1,1,1,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,1,1,1,4,4,1,1,1,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,1,4,4,4,4,4,4,1,4,1,1,0,1,1,1,1,1,1,
+    4,4,4,4,4,4,0,0,0,4,4,4,4,4,4,4,4,4,4,0,0,0,4,4,4,4,4,4,
+    1,1,1,1,1,1,0,1,1,4,1,4,4,4,4,4,4,1,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,1,1,1,4,4,1,1,1,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
     1,0,0,3,0,0,0,0,0,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -50,8 +50,6 @@ function createBoard(){
             squares[i].classList.add('pac-dot')
         }else if(layout[i] === 1) {
             squares[i].classList.add('wall') 
-        }else if (layout[i]===2) {
-            squares[i].classList.add('ghost-lair')
         }else if(layout[i] === 3) {
             squares[i].classList.add('heart')
         }
@@ -59,7 +57,7 @@ function createBoard(){
 }
 createBoard()
 
-let pacmanCurrentIndex =  490
+let pacmanCurrentIndex =  378
 squares[pacmanCurrentIndex].classList.add('pacman')
 
 let direction =1
@@ -68,7 +66,6 @@ function control(e){
     switch(e.keyCode) {
         case 40:
         if( 
-            !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair') &&
             !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
             pacmanCurrentIndex + width < width * width )
             pacmanCurrentIndex+= width
@@ -76,7 +73,6 @@ function control(e){
         break 
         case 38:
         if ( 
-            !squares[pacmanCurrentIndex - width].classList.contains('ghst-lair') &&
             !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
             pacmanCurrentIndex - width >= 0 )
             pacmanCurrentIndex-=width
@@ -84,7 +80,6 @@ function control(e){
         break 
         case 37:
         if ( 
-            !squares[pacmanCurrentIndex -1].classList.contains('ghost-lair') &&
             !squares[pacmanCurrentIndex -1].classList.contains('wall') &&
             pacmanCurrentIndex % width !== 0)
             pacmanCurrentIndex-=1
@@ -92,7 +87,6 @@ function control(e){
         break 
         case 39:
         if ( 
-            !squares[pacmanCurrentIndex +1].classList.contains('ghost-lair') &&
             !squares[pacmanCurrentIndex +1].classList.contains('wall') && 
             pacmanCurrentIndex % width <width -1 )
             pacmanCurrentIndex+=1
@@ -140,10 +134,10 @@ class Ghost {
 }
 
 const ghosts = [
-    new Ghost('blinky', 348, 250),
-    new Ghost('pinky', 376, 300),
-    new Ghost('inky', 351, 350),
-    new Ghost('clyde', 379, 500)
+    new Ghost('blinky', 110, 250),
+    new Ghost('pinky', 30, 2000),
+    new Ghost('inky', 701, 1850),
+    new Ghost('clyde', 749, 1500)
 ]
 //draw ghosts on grid
 ghosts.forEach(ghost => {
@@ -194,9 +188,10 @@ function gameOver() {
 }
 
 function checkWin () {
-    if(score === 275){
+    if(score === 250){
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', control)
         scoreDisplay.innerHTML = '🎊You WON 🎉'
     }
 }
+

@@ -64,28 +64,28 @@ let direction =1
 function control(e){
     squares[pacmanCurrentIndex].classList.remove('pacman')
     switch(e.keyCode) {
-        case 40:
+        case 83:
         if( 
             !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
             pacmanCurrentIndex + width < width * width )
             pacmanCurrentIndex+= width
 
         break 
-        case 38:
+        case 87:
         if ( 
             !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
             pacmanCurrentIndex - width >= 0 )
             pacmanCurrentIndex-=width
 
         break 
-        case 37:
+        case 65:
         if ( 
             !squares[pacmanCurrentIndex -1].classList.contains('wall') &&
             pacmanCurrentIndex % width !== 0)
             pacmanCurrentIndex-=1
             if(pacmanCurrentIndex===364) { pacmanCurrentIndex = 391}
         break 
-        case 39:
+        case 68:
         if ( 
             !squares[pacmanCurrentIndex +1].classList.contains('wall') && 
             pacmanCurrentIndex % width <width -1 )
@@ -134,10 +134,10 @@ class Ghost {
 }
 
 const ghosts = [
-    new Ghost('blinky', 110, 250),
+    new Ghost('blinky', 110, 2000),
     new Ghost('pinky', 30, 2000),
-    new Ghost('inky', 701, 1850),
-    new Ghost('clyde', 749, 1500)
+    new Ghost('inky', 701, 2000),
+    new Ghost('clyde', 749, 2000)
 ]
 //draw ghosts on grid
 ghosts.forEach(ghost => {

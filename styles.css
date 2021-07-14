@@ -60,14 +60,6 @@ body {
     transform-origin: 100% 100%;
 }
 
-.pacman {
-    background-color: rgb(250, 212, 41);
-    border: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
 .blinky {
     background-color: #ff006e;
     border: none;
@@ -93,4 +85,42 @@ body {
     border: none;
     border-radius: 0;
     background-color: orangered;
+}
+
+/* .pacman {
+    background-color: rgb(250, 212, 41);
+    border: none;
+    
+    border-radius: 50%;
+} */
+.pacman {
+    background-color: yellow;
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    clip-path: polygon(
+        0 0,
+        20px 0,
+        20px -5px,
+        8px 10px,
+        20px 25px,
+        20px 20px,
+        0 20px
+    );
+    animation: chew 0.2s linear forwards infinite;
+}
+
+@keyframes chew {
+    50% {
+        clip-path: polygon(
+            0 0,
+            20px 0,
+            20px 10px,
+            8px 10px,
+            20px 10px,
+            20px 20px,
+            0 20px
+        );
+    }
 }

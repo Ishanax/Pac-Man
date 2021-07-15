@@ -141,7 +141,7 @@ h1 {
     display: block;
     height: 0;
     width: 0;
-    border: solid 10px yellow;
+    border: solid 8px yellow;
     border-radius: 50%;
     border-right-color: transparent;
     border-bottom-color: transparent;

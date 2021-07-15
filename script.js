@@ -6,7 +6,8 @@ const result = document.getElementById('result')
 
 let squares = []
 let score = 0
-let direction =1
+let direction = 1
+let pacmanCurrentIndex =  378
 
 // 0 - pacdot
 // 1 - wall
@@ -43,12 +44,12 @@ const layout = [
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 
 ]
 
-function createBoard(){
+function createBoard(){ 
     for (let i = 0; i < layout.length; i++) {
         const square = document.createElement('div')
         grid.appendChild(square)
         squares.push(square)
-
+         
         if(layout[i] === 0) {
             squares[i].classList.add('pac-dot')
         }else if(layout[i] === 1) {
@@ -60,15 +61,13 @@ function createBoard(){
 }
 createBoard()
 
-let pacmanCurrentIndex =  378
-
-squares[pacmanCurrentIndex].classList.add('pac-man')
-
+squares[pacmanCurrentIndex].classList.add('pacman')
 
 function control(e){
     squares[pacmanCurrentIndex].classList.remove('pacman')
     squares[pacmanCurrentIndex].style.transform = 'rotate(0deg)';
     switch(e.key) {
+        case "s":
         case "ArrowDown":
         if( 
             !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
@@ -77,6 +76,7 @@ function control(e){
             squares[pacmanCurrentIndex].style.transform = 'rotate(90deg)'
             }
         break 
+        case "w":
         case "ArrowUp":
         if ( 
             !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
@@ -85,6 +85,7 @@ function control(e){
             squares[pacmanCurrentIndex].style.transform = 'rotate(-90deg)'
             }
         break 
+        case "a":
         case "ArrowLeft":
         if ( 
             !squares[pacmanCurrentIndex -1].classList.contains('wall') &&
@@ -94,6 +95,7 @@ function control(e){
             }
             if(pacmanCurrentIndex===364) { pacmanCurrentIndex = 391}
         break 
+        case "d":
         case "ArrowRight":
         if ( 
             !squares[pacmanCurrentIndex +1].classList.contains('wall') && 
@@ -146,9 +148,9 @@ class Ghost {
 
 const ghosts = [
     new Ghost('blinky', 110, 2000),
-    new Ghost('pinky', 30, 200),
-    new Ghost('inky', 701, 200),
-    new Ghost('clyde', 749, 200)
+    new Ghost('pinky', 30, 2000),
+    new Ghost('inky', 701, 900),
+    new Ghost('clyde', 749, 150)
 ]
 //draw ghosts on grid
 ghosts.forEach(ghost => {
@@ -156,24 +158,23 @@ ghosts.forEach(ghost => {
     squares[ghost.currentIndex].classList.add('ghost')
 })
 
-//move ghosts
 ghosts.forEach(ghost => moveGhost(ghost))
-
 function moveGhost(ghost){
     const directions = [-1, +1, -width, +width]
     let direction = directions[Math.floor(Math.random()* directions.length)]
 
     ghost.timerId = setInterval(function() {
         if(
-            !squares[ghost.currentIndex +direction].classList.contains('ghost') &&
-            !squares[ghost.currentIndex +direction].classList.contains('wall')
+            // !squares[ghost.currentIndex + direction].classList.contains('ghost') &&
+            !squares[ghost.currentIndex + direction].classList.contains('wall')
         ){
         squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost')
         ghost.currentIndex += direction
         squares[ghost.currentIndex].classList.add(ghost.className)
         squares[ghost.currentIndex].classList.add('ghost')
-        } else direction = directions[Math.floor(Math.random()* directions.length)]
-
+        } else {
+            direction = directions[Math.floor(Math.random()* directions.length)]
+        }
         if(ghost.isScared) {
             squares[ghost.currentIndex].classList.add('scared-ghost')
         }
@@ -196,7 +197,6 @@ function gameOver() {
             document.removeEventListener('keyup', control)
             result.innerHTML = `Game Over`
             document.getElementById('scoreText').remove()
-
         }
 }
 

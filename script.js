@@ -10,7 +10,6 @@ let direction =1
 
 // 0 - pacdot
 // 1 - wall
-// 2 - ghost lair
 // 3 - heart
 // 4 - empty
 const layout = [
@@ -62,38 +61,46 @@ function createBoard(){
 createBoard()
 
 let pacmanCurrentIndex =  378
+
 squares[pacmanCurrentIndex].classList.add('pac-man')
 
 
 function control(e){
     squares[pacmanCurrentIndex].classList.remove('pacman')
-    switch(e.keyCode) {
-        case 83:
+    squares[pacmanCurrentIndex].style.transform = 'rotate(0deg)';
+    switch(e.key) {
+        case "ArrowDown":
         if( 
             !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
-            pacmanCurrentIndex + width < width * width )
+            pacmanCurrentIndex + width < width * width ) {
             pacmanCurrentIndex+= width
-
+            squares[pacmanCurrentIndex].style.transform = 'rotate(90deg)'
+            }
         break 
-        case 87:
+        case "ArrowUp":
         if ( 
             !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
-            pacmanCurrentIndex - width >= 0 )
+            pacmanCurrentIndex - width >= 0 ) {
             pacmanCurrentIndex-=width
-
+            squares[pacmanCurrentIndex].style.transform = 'rotate(-90deg)'
+            }
         break 
-        case 65:
+        case "ArrowLeft":
         if ( 
             !squares[pacmanCurrentIndex -1].classList.contains('wall') &&
-            pacmanCurrentIndex % width !== 0)
+            pacmanCurrentIndex % width !== 0){
             pacmanCurrentIndex-=1
+            squares[pacmanCurrentIndex].style.transform = 'rotate(180deg)'
+            }
             if(pacmanCurrentIndex===364) { pacmanCurrentIndex = 391}
         break 
-        case 68:
+        case "ArrowRight":
         if ( 
             !squares[pacmanCurrentIndex +1].classList.contains('wall') && 
-            pacmanCurrentIndex % width <width -1 )
+            pacmanCurrentIndex % width <width -1) {
             pacmanCurrentIndex+=1
+            squares[pacmanCurrentIndex].style.transform = 'rotate(0deg)'
+            }
             if(pacmanCurrentIndex === 391) { pacmanCurrentIndex = 364}
         break 
     }

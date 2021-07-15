@@ -148,9 +148,11 @@ class Ghost {
 
 const ghosts = [
     new Ghost('blinky', 110, 2000),
-    new Ghost('pinky', 30, 2000),
+    new Ghost('pinky', 30, 200),
     new Ghost('inky', 701, 900),
-    new Ghost('clyde', 749, 150)
+    new Ghost('clyde', 749, 150),
+    new Ghost('timmy', 365, 950),
+    new Ghost('kyle', 390, 950)
 ]
 //draw ghosts on grid
 ghosts.forEach(ghost => {
@@ -165,7 +167,7 @@ function moveGhost(ghost){
 
     ghost.timerId = setInterval(function() {
         if(
-            // !squares[ghost.currentIndex + direction].classList.contains('ghost') &&
+            !squares[ghost.currentIndex + direction].classList.contains('ghost') &&
             !squares[ghost.currentIndex + direction].classList.contains('wall')
         ){
         squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost')

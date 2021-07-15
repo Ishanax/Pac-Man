@@ -127,6 +127,17 @@ h1 {
     border: none;
     border-radius: 35% 35% 0 0;
 }
+.timmy {
+    background-color: orange;
+    border: none;
+    border-radius: 35% 35% 0 0;
+}
+
+.kyle {
+    background-color: aqua;
+    border: none;
+    border-radius: 35% 35% 0 0;
+}
 
 .scared-ghost {
     border: none;

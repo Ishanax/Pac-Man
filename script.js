@@ -6,6 +6,7 @@ const result = document.getElementById('result')
 
 let squares = []
 let score = 0
+let direction =1
 
 // 0 - pacdot
 // 1 - wall
@@ -60,9 +61,8 @@ function createBoard(){
 }
 createBoard()
 
-let direction =1
 let pacmanCurrentIndex =  378
-
+squares[pacmanCurrentIndex].classList.add('pac-man')
 
 
 function control(e){
@@ -194,14 +194,13 @@ function gameOver() {
 }
 
 function checkWin () {
-    if(score === 250){
+    if(score === 300){
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', control)
         result.innerHTML = `You Won`
         document.getElementById('scoreText').remove('Score:')
     }
 }
-
 
 startButton.addEventListener('click',() => {
     window.location.reload();

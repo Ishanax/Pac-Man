@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Sarpanch:900');
+
 html,
 body {
     margin: 10;
@@ -8,6 +10,52 @@ body {
     align-items: center;
     width: 100vh;
     height: 100vh;
+    background: black;
+    color: white;
+    z-index: -10;
+    font-family: 'Sarpanch', sans-serif;
+}
+
+/* Credits for title to Paul Grant */
+h1 {
+    grid-area: text;
+    font-family: 'Sarpanch', sans-serif;
+    font-size: 15vmin;
+    margin: 0;
+    padding: 30px;
+    color: #1d9099;
+    text-shadow: 1vmin 1vmin 0 #e79c10, -1vmin -1vmin 0 #d53a33;
+}
+
+#start {
+    font-size: 20px;
+    font-family: 'Sarpanch', sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    border: 1px solid white;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+    margin: 2em;
+}
+
+#start::after {
+    content: '';
+    background-color: #e79c10;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+}
+
+#start:hover::after {
+    top: 0px;
+    left: 0px;
 }
 
 .grid {
@@ -26,8 +74,7 @@ body {
 
 .pac-dot {
     background-color: green;
-    border-radius: 50%;
-    border: 5px solid white;
+    border: 5px solid black;
     box-sizing: border-box;
 }
 
@@ -63,36 +110,30 @@ body {
 .blinky {
     background-color: #ff006e;
     border: none;
-    border-radius: 0;
+    border-radius: 35% 35% 0 0;
 }
 .pinky {
     background-color: hotpink;
     border: none;
-    border-radius: 0;
+    border-radius: 35% 35% 0 0;
 }
 .inky {
-    background-color: indigo;
+    background-color: rgb(104, 44, 146);
     border: none;
-    border-radius: 0;
+    border-radius: 35% 35% 0 0;
 }
 .clyde {
     background-color: #858ae3;
     border: none;
-    border-radius: 0;
+    border-radius: 35% 35% 0 0;
 }
 
 .scared-ghost {
     border: none;
-    border-radius: 0;
+    border-radius: 35% 35% 0 0;
     background-color: orangered;
 }
 
-/* .pacman {
-    background-color: rgb(250, 212, 41);
-    border: none;
-    
-    border-radius: 50%;
-} */
 .pacman {
     background-color: yellow;
     width: 10px;
@@ -123,4 +164,9 @@ body {
             0 20px
         );
     }
+}
+
+#result {
+    padding: 2rem;
+    font-size: 3rem;
 }

@@ -22,7 +22,7 @@ h1 {
     font-family: 'Sarpanch', sans-serif;
     font-size: 15vmin;
     margin: 0;
-    padding: 30px;
+    padding: 0.2rem;
     color: #1d9099;
     text-shadow: 1vmin 1vmin 0 #e79c10, -1vmin -1vmin 0 #d53a33;
 }
@@ -38,7 +38,7 @@ h1 {
     cursor: pointer;
     position: relative;
     background-color: rgba(255, 255, 255, 0);
-    margin: 2em;
+    margin: 0.2em;
 }
 
 #start::after {
@@ -177,6 +177,11 @@ h1 {
 }
 
 #result {
-    padding: 2rem;
+    padding: 0.5rem;
     font-size: 3rem;
+}
+
+p {
+    padding: 0;
+    margin: 0;
 }

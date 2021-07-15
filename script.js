@@ -1,6 +1,9 @@
 const width = 28
 const grid = document.querySelector('.grid')
 const scoreDisplay = document.querySelector('#score')
+const startButton = document.getElementById('start')
+const result = document.getElementById('result')
+
 let squares = []
 let score = 0
 
@@ -57,10 +60,11 @@ function createBoard(){
 }
 createBoard()
 
-let pacmanCurrentIndex =  378
-squares[pacmanCurrentIndex].classList.add('pacman')
-
 let direction =1
+let pacmanCurrentIndex =  378
+
+
+
 function control(e){
     squares[pacmanCurrentIndex].classList.remove('pacman')
     switch(e.keyCode) {
@@ -114,7 +118,7 @@ function heartEaten() {
         squares[pacmanCurrentIndex].classList.remove('heart')
         score += 10
         ghosts.forEach(ghost => ghost.isScared = true)
-        setTimeout(unScareGhosts, 10000)
+        setTimeout(unScareGhosts, 5000)
     }
 }
 
@@ -183,7 +187,9 @@ function gameOver() {
         && !squares[pacmanCurrentIndex].classList.contains('scared-ghost')){
             ghosts.forEach(ghost => clearInterval(ghost.timerId))
             document.removeEventListener('keyup', control)
-            scoreDisplay.innerHTML = 'You LOSE! 😭'
+            result.innerHTML = `Game Over`
+            document.getElementById('scoreText').remove()
+
         }
 }
 
@@ -191,7 +197,13 @@ function checkWin () {
     if(score === 250){
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', control)
-        scoreDisplay.innerHTML = '🎊You WON 🎉'
+        result.innerHTML = `You Won`
+        document.getElementById('scoreText').remove('Score:')
     }
 }
+
+
+startButton.addEventListener('click',() => {
+    window.location.reload();
+})
 

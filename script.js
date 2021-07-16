@@ -3,6 +3,7 @@ const grid = document.querySelector('.grid')
 const scoreDisplay = document.querySelector('#score')
 const startButton = document.getElementById('start')
 const result = document.getElementById('result')
+const finalScore = document.getElementById('finalScore')
 
 let squares = []
 let score = 0
@@ -126,7 +127,7 @@ function heartEaten() {
     if(squares[pacmanCurrentIndex].classList.contains('heart')){
         score += 10
         ghosts.forEach(ghost => ghost.isScared = true)
-        setTimeout(unScareGhosts, 10000)
+        setTimeout(unScareGhosts, 5000)
         squares[pacmanCurrentIndex].classList.remove('heart')
     }
 }
@@ -198,6 +199,7 @@ function gameOver() {
     if(
         squares[pacmanCurrentIndex].classList.contains('ghost')
         && !squares[pacmanCurrentIndex].classList.contains('scared-ghost')){
+            finalScore.innerText = "You scored: " + score
             ghosts.forEach(ghost => clearInterval(ghost.timerId))
             document.removeEventListener('keyup', control)
             result.innerHTML = `Game Over`
@@ -207,6 +209,7 @@ function gameOver() {
 
 function checkWin () {
     if(score === 200){
+        finalScore.innerText = "You scored: " + score
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', control)
         result.innerHTML = `You Won`

@@ -9,6 +9,8 @@ let squares = []
 let score = 0
 let direction = 1
 let pacmanCurrentIndex =  378
+let numHearts = 6
+let numPacDots = 232
 
 // 0 - pacdot
 // 1 - wall
@@ -120,6 +122,7 @@ function pacDotEaten(){
         score++
         scoreDisplay.innerHTML = score
         squares[pacmanCurrentIndex].classList.remove('pac-dot')
+        numPacDots--
     }
 }
 
@@ -129,6 +132,7 @@ function heartEaten() {
         ghosts.forEach(ghost => ghost.isScared = true)
         setTimeout(unScareGhosts, 5000)
         squares[pacmanCurrentIndex].classList.remove('heart')
+        numHearts--
     }
 }
 
@@ -208,7 +212,7 @@ function gameOver() {
 }
 
 function checkWin () {
-    if(score === 200){
+    if(numPacDots === 0 && numHearts === 0){
         finalScore.innerText = "You scored: " + score
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', control)

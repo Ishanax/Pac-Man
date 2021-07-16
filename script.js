@@ -34,7 +34,7 @@ const layout = [
     1,1,1,1,1,1,0,1,1,4,1,4,4,4,4,4,4,1,4,1,1,0,1,1,1,1,1,1,
     1,1,1,1,1,1,0,1,1,4,1,1,1,4,4,1,1,1,4,1,1,0,1,1,1,1,1,1,
     1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
-    1,0,0,3,0,0,0,0,0,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,1,
+    1,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
     1,3,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,3,1,
@@ -112,8 +112,8 @@ function control(e){
     squares[pacmanCurrentIndex].classList.add('pacman')
     pacDotEaten()
     heartEaten()
-    checkWin()
     gameOver()
+    checkWin()
 }
 document.addEventListener('keyup', control)
 
@@ -203,21 +203,21 @@ function gameOver() {
     if(
         squares[pacmanCurrentIndex].classList.contains('ghost')
         && !squares[pacmanCurrentIndex].classList.contains('scared-ghost')){
-            finalScore.innerText = "You scored: " + score
             ghosts.forEach(ghost => clearInterval(ghost.timerId))
             document.removeEventListener('keyup', control)
             result.innerHTML = `Game Over`
             document.getElementById('scoreText').remove()
+            finalScore.innerText = "You scored: " + score
         }
 }
 
 function checkWin () {
     if(numPacDots === 0 && numHearts === 0){
-        finalScore.innerText = "You scored: " + score
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', control)
         result.innerHTML = `You Won`
         document.getElementById('scoreText').remove('Score:')
+        finalScore.innerText = "You scored: " + score
     }
 }
 
